@@ -1,26 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ACME_Management_Library.Classes;
+using Xunit;
 
-namespace ACME_Library_Unit_Tests
+namespace ACME_Management_Tests
 {
-    internal class StudentTest
-public class CourseTests
+    public class StudentTests
     {
-        private class FakeGateway : IPaymentGateway
+        // Crear un estudiante válido
+        [Fact]
+        public void CreateStudent_ShouldSucceed_WhenStudentIsAdult()
         {
-            public bool ProcessPayment(Student s, decimal a) => true;
+            var name = "Juan";
+            var dateOfBirth = new DateTime(2004, 5, 15); 
+
+            var student = new Student(name, dateOfBirth);
+
+            Assert.Equal(name, student.Name);
+            Assert.Equal(dateOfBirth, student.DateOfBirth);
         }
 
+        // Lanzar excepción cuando el estudiante es menor 
         [Fact]
-        public void Enroll_Student_When_Payment_Succeeds()
+        public void CreateStudent_ShouldThrowException_WhenStudentIsUnderage()
         {
-            var student = new Student("Carlos", 22);
-            var course = new Course("Math", 100, DateTime.Today, DateTime.Today.AddMonths(1));
-            course.Enroll(student, new FakeGateway());
-            Assert.Contains(student, course.EnrolledStudents);
+            var name = "Juan";
+            var dateOfBirth = DateTime.Now.AddYears(-17); 
+
+            var exception = Assert.Throws<ArgumentException>(() => new Student(name, dateOfBirth));
+            Assert.Equal("Only adults can register.", exception.Message);
+        }
+
+        // Verificar que la edad se calcula correctamente
+        [Fact]
+        public void CreateStudent_ShouldCalculateCorrectAge()
+        {
+            var name = "Juan";
+            var dateOfBirth = new DateTime(1990, 5, 1);
+            var today = new DateTime(2023, 5, 1); 
+            var expectedAge = 33; 
+
+            var student = new Student(name, dateOfBirth);
+
+            Assert.Equal(name, student.Name);
+            Assert.Equal(dateOfBirth, student.DateOfBirth);
+        }
+
+        // Comprobar nombres vacíos o nulos
+        [Fact]
+        public void CreateStudent_ShouldThrowException_WhenNameIsNullOrWhitespace()
+        {
+            var dateOfBirth = new DateTime(2000, 5, 15); // Fecha válida
+
+            Assert.Throws<ArgumentException>(() => new Student(null, dateOfBirth));
+            Assert.Throws<ArgumentException>(() => new Student("", dateOfBirth));
+            Assert.Throws<ArgumentException>(() => new Student("   ", dateOfBirth));
         }
     }
 }

@@ -7,17 +7,34 @@ using ACME_Management_Library.Classes;
 
 namespace ACME_Management_Library.Classes
 {
-    internal class Student
+    public class Student
     {
         public string Name { get; }
-        public int Age { get; }
+        public DateTime DateOfBirth { get; }
 
-        public Student(string name, int age)
+        public Student(string name, DateTime dateOfBirth)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("The student's name cannot be null, empty, or consist only of white spaces.");
+
+            int age = CalculateAge(dateOfBirth);
+
             if (age < 18)
                 throw new ArgumentException("Only adults can register.");
+
             Name = name;
-            Age = age;
+            DateOfBirth = dateOfBirth;
+        }
+        private int CalculateAge(DateTime dateOfBirth)
+        {
+            DateTime today = DateTime.Today;
+            int age = DateTime.Today.Year - dateOfBirth.Year;
+
+            if (dateOfBirth.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+            return age;
         }
     }
 }
