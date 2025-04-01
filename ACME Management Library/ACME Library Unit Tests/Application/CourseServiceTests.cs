@@ -37,7 +37,7 @@ namespace ACME_Library_Unit_Tests.Application
         public void GetCoursesWithStudents_ShouldReturnOnlyCoursesWithStudents()
         {
             var student = new Student("Juan", "García", new DateTime(2000, 1, 1));
-            _courses[1].EnrollStudent(student, new FakePaymentService(true)); // Solo en curso Java Advanced
+            _courses[1].EnrollStudent(student, new FakePaymentService(true));
 
             _mockRepo.Setup(repo => repo.GetCoursesInDateRange(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                      .Returns(_courses);

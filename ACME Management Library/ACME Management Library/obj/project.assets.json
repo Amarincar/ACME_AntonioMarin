@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anton\\source\\repos\\ACME Management Library\\ACME Management Library\\ACME Management Library.csproj",
-      "projectName": "ACME Management Library",
-      "projectPath": "C:\\Users\\anton\\source\\repos\\ACME Management Library\\ACME Management Library\\ACME Management Library.csproj",
+      "projectUniqueName": "C:\\_repos\\ACME Management Library\\ACME Management Library\\ACME_Management_Library.csproj",
+      "projectName": "ACME_Management_Library",
+      "projectPath": "C:\\_repos\\ACME Management Library\\ACME Management Library\\ACME_Management_Library.csproj",
       "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anton\\source\\repos\\ACME Management Library\\ACME Management Library\\obj\\",
+      "outputPath": "C:\\_repos\\ACME Management Library\\ACME Management Library\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

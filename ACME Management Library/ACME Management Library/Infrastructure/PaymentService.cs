@@ -11,9 +11,9 @@ namespace ACME_Management_Library.Infrastructure
                 throw new ArgumentNullException(nameof(student));
 
             if (amount <= 0)
-                return true; // Si el curso es gratis, el pago es exitoso por defecto.
+                return true; //If course is free, payment will be success buy default.
 
-            // Simulación de pago: Se asume que el pago siempre es exitoso.
+            // Pay simulation: Success by default.
             Console.WriteLine($"Processing payment of {amount:C} for student {student.Name} {student.LastName}");
             return true;
         }
