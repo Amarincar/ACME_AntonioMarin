@@ -14,9 +14,11 @@ namespace ACME_Management_Library.Infrastructure
             _courses.Add(course);
         }
 
-        public Course? GetById(Guid id)
+        public Course GetById(Guid id)
         {
+#nullable disable
             return _courses.FirstOrDefault(c => c.Id == id);
+#nullable enable
         }
 
         public IEnumerable<Course> GetCoursesInDateRange(DateTime startDate, DateTime endDate)

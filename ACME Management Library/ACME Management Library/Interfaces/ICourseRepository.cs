@@ -9,7 +9,7 @@ namespace ACME_Management_Library.Interfaces
     public interface ICourseRepository
     {
         void Add(Course course);
-        Course? GetById(Guid id); 
+        Course GetById(Guid id); 
         IEnumerable<Course> GetCoursesInDateRange(DateTime startDate, DateTime endDate);
     }
 }
