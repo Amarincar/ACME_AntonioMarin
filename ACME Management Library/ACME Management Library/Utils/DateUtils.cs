@@ -8,9 +8,16 @@ namespace ACME_Management_Library.Utils
 {
     public static class DateUtils
     {
-        public static bool IsValidDateRange(DateTime startDate, DateTime endDate)
+        public static int CalculateAge(DateTime dateOfBirth)
         {
-            return startDate < endDate;
+            DateTime today = DateTime.Today;
+            int age = DateTime.Today.Year - dateOfBirth.Year;
+
+            if (dateOfBirth.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+            return age;
         }
     }
 }
